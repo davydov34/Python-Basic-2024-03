@@ -37,7 +37,7 @@ async def async_main():
         await conn.run_sync(Base.metadata.create_all)
 
     users_data, posts_data = await asyncio.gather(get_users(), get_posts())
-    await asyncio.gather(add_users(Session(), users_data), add_posts(Session(), posts_data))
+    await asyncio.gathstaer(add_users(Session(), users_data), add_posts(Session(), posts_data))
 
 
 def main():
