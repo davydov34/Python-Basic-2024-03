@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>HoweWork - 06 (список продуктов)</title>
+    <link rel="stylesheet" href="static/css/css.css">
+</head>
+<body>
+    <table>
+          <caption>
+                <h1>Список образовательных продуктов</h1>
+          </caption>
+    <thead>
+    <tr>
+      <th scope="col" style="width: 5%">ID</th>
+      <th scope="col" style="width: 60%">Образовательная программа</th>
+      <th scope="col" style="width: 10%">Продолжительность (ак.ч.)</th>
+      <th scope="col" style="width: 15%">Стоимость (руб.)</th>
+      <th scope="col" style="width: 10%">Дата добавления</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for p in data %}
+    <tr>
+      <th scope="row" align="center">{{p.id}}</th>
+      <td align="left">{{p.name}}</td>
+      <td align="right">{{p.duration}}</td>
+      <td align="right">{{p.price}}</td>
+      <td align="right">{{p.date}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+    </table><br>
+<p style="text-align: left"><input class="styled" style="width:310px" type="button" value="Добавить образовательный продукт" onclick="window.location='/create'">
+<input class="styled" style="width:120px" type="button" value="На главную" onclick="window.location='/'">
+</body>
+</html>
