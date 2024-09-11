@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ListView
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+      {% if object_list %}
+            <h1>List task: </h1>
+
+            <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-1">ID</div>
+          <div class="col col-2">Наименование</div>
+          <div class="col col-3">Дата создания</div>
+        </li>
+            {% for el in object_list %}
+        <li class="table-row">
+          <div class="col col-1" data-label="Task ID"><a href="{{ book.get_absolute_url }}/details/{{ el.pk }}">{{ el.pk }}</a></div>
+          <div class="col col-2" data-label="Title"><a href="{{ book.get_absolute_url }}/details/{{ el.pk }}">{{ el.title }}</a></div>
+          <div class="col col-3" data-label="Date created"><a href="{{ book.get_absolute_url }}/details/{{ el.pk }}">{{ el.date_created }}</a></div>
+        </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}">предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">последняя &raquo;</a>
+            {% endif %}
+        </span><br>
+    {% else %}
+        <h2>В базе данных отсуствуют задачи.</h2>
+
+    {% endif %}
+        <a href="{{ book.get_absolute_url }}/">Вернуться на главную</a>
+</div>
+{% endblock %}

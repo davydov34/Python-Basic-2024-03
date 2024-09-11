@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    DetailView
+{% endblock %}
+
+{% block body %}
+    <h1>Задача: №{{ object.pk }}</h1>
+    <p>Наименование: {{ object.title }}</p>
+    <p>Инвентарный объект: {{ object.task_object }}</p>
+    <p>Код статуса задачи: {{ object.status }}</p>
+    <p>Дата создания задачи: {{object.date_created}}</p>
+    <p>Время создания задачи: {{object.time_created}}</p>
+
+    {% if object.time_closing %}
+        <p>Дата и время закрытия задачи: {{object.date_closing}} [{{object.time_closing}}]</p>
+    {% else %}
+        <p>Дата и время закрытия задачи: Задача находится в работе...</p>
+    {% endif %}
+
+<p>Комментарии к задаче:</p>
+<textarea class="textarea1" readonly rows="10" cols="45" name="text" disabled="disabled">
+  {{ object.description }}
+</textarea><br>
+<a href="{{ book.get_absolute_url }}/list/">Вернуться к списку</a><br>
+<a href="{{ book.get_absolute_url }}/">Вернуться на главную</a>
+
+{% endblock %}
