@@ -5,7 +5,6 @@ import datetime
 
 # Create your models here.
 class TaskModel(models.Model):
-    #task_id = models.BigIntegerField(primary_key=True)
     title = models.CharField(max_length=50)
     task_object = models.IntegerField(null=False)
     status = models.IntegerField(null=False, default=100)
